@@ -1,0 +1,44 @@
+<mvc:View controllerName="test.employeesui5.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+          <content>
+
+<Table id="employeeTable" items="{/Employees}" growing="true" growingThreshold="10" inset="false">
+    <headerToolbar>
+        <Toolbar>
+            <Title text="Employees" level="H2" />
+            <ToolbarSpacer />
+            <Button text="Create Employee" icon="sap-icon://add" type="Emphasized" press=".onCreateEmployee" />
+            <Button text="Update Employee" icon="sap-icon://add" type="Emphasized" press=".onUpdateEmployee" />
+            <Button text="Delete Employee" icon="sap-icon://add" type="Reject" press=".onDeleteEmployee" />
+            <SearchField width="250px" placeholder="Search Employee" />
+        </Toolbar>
+    </headerToolbar>
+    <columns>
+        <Column><Text text="Name" /></Column>
+        <Column><Text text="Designation" /></Column>
+        <Column><Text text="Email" /></Column>
+        <Column><Text text="Phone" /></Column>
+        <Column><Text text="Salary" /></Column>
+        <Column><Text text="Status" /></Column>
+    </columns>
+
+    <items>
+        <ColumnListItem>
+            <cells>
+                <ObjectIdentifier title="{Name}" />
+                <Text text="{Designation}" />
+                <Link text="{Email}" href="mailto:{Email}" />
+                <Text text="{Phone}" />
+                <ObjectNumber number="{Salary}" unit="INR" />
+                <ObjectStatus text="{Status}" state="Success" />
+            </cells>
+        </ColumnListItem>
+    </items>
+
+</Table>
+
+        </content>
+    </Page>
+</mvc:View>

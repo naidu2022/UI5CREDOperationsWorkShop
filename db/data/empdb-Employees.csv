@@ -1,0 +1,6 @@
+ID,Name,Designation,Email,Phone,Salary,Status
+31663134-a1b2-c3d4-e5f6-111111111111,Naidu,Manager,naidu@company.com,9876543210,120000,Active
+31663135-a1b2-c3d4-e5f6-222222222222,Raju,Senior Developer,raju@company.com,9876543211,90000,Active
+31663136-a1b2-c3d4-e5f6-333333333333,Sridhar,Business Analyst,sridhar@company.com,9876543212,85000,Active
+31663137-a1b2-c3d4-e5f6-444444444444,Amar,Technical Lead,amar@company.com,9876543213,110000,Inactive
+31663138-a1b2-c3d4-e5f6-555555555555,Satu,Project Manager,satu@company.com,9876543214,130000,Active
