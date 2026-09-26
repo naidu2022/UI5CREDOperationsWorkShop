@@ -4,7 +4,7 @@
     <Page id="page" title="{i18n>title}">
           <content>
 
-<Table id="employeeTable" items="{/Employees}" growing="true" growingThreshold="10" inset="false">
+<Table id="employeeTable" items="{/Employees}" mode="MultiSelect" growing="true" growingThreshold="10" inset="false">
     <headerToolbar>
         <Toolbar>
             <Title text="Employees" level="H2" />
