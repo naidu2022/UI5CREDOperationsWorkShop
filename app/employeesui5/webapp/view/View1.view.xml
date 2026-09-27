@@ -12,7 +12,7 @@
             <Button text="Create Employee" icon="sap-icon://add" type="Emphasized" press=".onCreateEmployee" />
             <Button text="Update Employee" icon="sap-icon://add" type="Emphasized" press=".onUpdateEmployee" />
             <Button text="Delete Employee" icon="sap-icon://add" type="Reject" press=".onDeleteEmployee" />
-            <SearchField width="250px" placeholder="Search Employee" />
+            <SearchField width="250px" placeholder="Search Employee" search=".onSearchEmployee" />
         </Toolbar>
     </headerToolbar>
     <columns>

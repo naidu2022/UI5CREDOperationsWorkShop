@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
-], (Controller, MessageBox) => {
+    "sap/m/MessageBox",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
+], (Controller, MessageBox, Filter, FilterOperator) => {
     "use strict";
 
     return Controller.extend("test.employeesui5.controller.View1", {
@@ -96,6 +98,29 @@ sap.ui.define([
                     }
                 }
             );
+        },
+        onSearchEmployee: async function (oEvent) {
+            var sValue = oEvent.getParameter("query");
+            var oTable = this.byId("employeeTable");
+            var oBinding = oTable.getBinding("items");
+            var aFilters = [];
+            if (sValue) {
+                aFilters.push(
+                    new Filter({
+                        filters: [
+                            new Filter("Name", FilterOperator.Contains, sValue),
+                            new Filter("Designation", FilterOperator.Contains, sValue),
+                            new Filter("Email", FilterOperator.Contains, sValue),
+                            //new Filter("Phone", FilterOperator.Contains, sValue),
+                            //new Filter("Salary", FilterOperator.Contains, sValue),
+                            new Filter("Status", FilterOperator.Contains, sValue)
+                        ],
+                        and: false
+                    })
+                );
+            }
+            oBinding.filter(aFilters);
+            //MessageBox.success("Search function");
         },
         loadFragment: function () {
             if (!this.dialog) {
