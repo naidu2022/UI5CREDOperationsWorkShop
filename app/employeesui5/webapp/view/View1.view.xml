@@ -4,14 +4,15 @@
     <Page id="page" title="{i18n>title}">
           <content>
 
-<Table id="employeeTable" items="{/Employees}" mode="MultiSelect" growing="true" growingThreshold="10" inset="false">
+<Table id="employeeTable" items="{/Employees}"  mode="MultiSelect" selectionChange=".onSelectionChange" growing="true" growingThreshold="10" inset="false">
     <headerToolbar>
         <Toolbar>
             <Title text="Employees" level="H2" />
             <ToolbarSpacer />
             <Button text="Create Employee" icon="sap-icon://add" type="Emphasized" press=".onCreateEmployee" />
-            <Button text="Update Employee" icon="sap-icon://add" type="Emphasized" press=".onUpdateEmployee" />
-            <Button text="Delete Employee" icon="sap-icon://add" type="Reject" press=".onDeleteEmployee" />
+            <Button text="Update Employee" icon="sap-icon://add" enabled="{viewModel>/buttonEnabled}" type="Emphasized" press=".onUpdateEmployee" />
+            <Button text="Delete Employee" icon="sap-icon://add" enabled="{viewModel>/buttonEnabled}" type="Reject" press=".onDeleteEmployee" />
+            <Button text="View Employee" press=".onViewEmployee" enabled="{viewModel>/buttonEnabled}" type="Emphasized" icon="sap-icon://display" />
             <SearchField width="250px" placeholder="Search Employee" search=".onSearchEmployee" />
         </Toolbar>
     </headerToolbar>

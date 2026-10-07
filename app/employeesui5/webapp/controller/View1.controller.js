@@ -8,9 +8,16 @@ sap.ui.define([
 
     return Controller.extend("test.employeesui5.controller.View1", {
         onInit() {
+            //MessageBox.success("Init");
+            var oViewModel = new sap.ui.model.json.JSONModel({
+                editMode: false,
+                buttonEnabled: false
+            });
+            this.getView().setModel(oViewModel, "viewModel");
         },
         onCreateEmployee: async function () {
             //MessageBox.success("Hello Naidu");
+            this.getView().getModel("viewModel").setProperty("/editMode", true);
             var listBinding = this.byId("employeeTable").getBinding("items");
             var newMemory = listBinding.create();
             var dialog = this.loadFragment();
@@ -34,11 +41,13 @@ sap.ui.define([
             }
             else {
                 //MessageBox.success("Good You have selected single record");
+                this.getView().getModel("viewModel").setProperty("/editMode", true);
+                this.getView().getModel("viewModel").setProperty("/buttonEnabled", true);
                 var oSelectedItem = aSelectedItems[0];
                 var oContext = oSelectedItem.getBindingContext();
                 var oDialog = this.loadFragment();
                 oDialog.setBindingContext(oContext);
-                oDialog.getBeginButton().setText("Update");
+                //oDialog.getBeginButton().setText("Update");
                 oDialog.open();
             }
 
@@ -131,11 +140,58 @@ sap.ui.define([
         },
         onCancelDialog: function () {
             this.dialog.close();
+            //this.newMemory.delete();
+            //this.newMemory=null;
         },
         onSaveDialog: function () {
             var oModel = this.getOwnerComponent().getModel();
             oModel.submitBatch("EmpGrp");
             this.loadFragment().close();
+
+        },
+        addCertifications: function () {
+            //MessageBox.success("lskdfj");
+            var certificationslistBinidng = this.byId("id_Certifications").getBinding("items");
+            var certifyMemory = certificationslistBinidng.create();
+
+        },
+        onViewEmployee: function () {
+            //MessageBox.success("lsdf");
+            var oTable = this.byId("employeeTable");
+            var aSelectedItems = oTable.getSelectedItems();
+            //MessageBox.success("You selected " + aSelectedItems.length +" Records");
+            if (aSelectedItems.length > 1) {
+                MessageBox.warning("Please select only single record to update the record");
+            }
+            else if (aSelectedItems.length < 1) {
+                MessageBox.warning("Please select at least single record to update the record");
+            }
+            else {
+                //MessageBox.success("Good You have selected single record");
+                this.getView().getModel("viewModel").setProperty("/editMode", false);
+                var oSelectedItem = aSelectedItems[0];
+                var oContext = oSelectedItem.getBindingContext();
+                var oDialog = this.loadFragment();
+                oDialog.setBindingContext(oContext);
+                //oDialog.getBeginButton().setText("Update");
+                oDialog.open();
+            }
+        },
+        onSelectionChange: function () {
+
+            var oTable = this.byId("employeeTable");
+            var aSelectedItems = oTable.getSelectedItems();
+
+            var bHasSelection = aSelectedItems.length > 0;
+            if( bHasSelection > 0){
+            this.getView()
+                .getModel("viewModel")
+                .setProperty("/buttonEnabled", true);
+        }else{
+             this.getView()
+                .getModel("viewModel")
+                .setProperty("/buttonEnabled", false);
+        }
 
         }
     });

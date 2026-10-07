@@ -9,4 +9,10 @@ entity Employees:cuid{
     Phone:Integer;
     Salary:Integer;
     Status:String(40);
+    certifications:Composition of many Certifications on certifications.employee=$self;
+}
+entity Certifications: cuid{
+    employee:Association to Employees;
+    code:String;
+    name:String;
 }
