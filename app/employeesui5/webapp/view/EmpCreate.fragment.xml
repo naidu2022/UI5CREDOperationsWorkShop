@@ -46,7 +46,7 @@
             <Button text="Save" visible="{viewModel>/editMode}" icon="sap-icon://save" type="Emphasized" press="onSaveDialog"/>
         </beginButton>
         <endButton>
-            <Button text="Cancel" icon="sap-icon://decline" press="onCancelDialog"/>
+            <Button text="Close" icon="sap-icon://decline" press="onCloselDialog"/>
         </endButton>
     </Dialog>
 </core:FragmentDefinition>

@@ -141,10 +141,11 @@ sap.ui.define([
             }
             return this.dialog;
         },
-        onCancelDialog: function () {
-            this.dialog.close();
-            //this.newMemory.delete();
-            //this.newMemory=null;
+        onCloselDialog: function () {
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.resetChanges("EmpGrp");
+            this.dialog.close();          
+           
         },
         onSaveDialog: async function () {
             try {
