@@ -23,6 +23,7 @@
         <Column><Text text="Phone" /></Column>
         <Column><Text text="Salary" /></Column>
         <Column><Text text="Status" /></Column>
+        <Column hAlign="Left"><Text text="Action" /></Column>
     </columns>
 
     <items>
@@ -34,6 +35,11 @@
                 <Text text="{Phone}" />
                 <ObjectNumber number="{Salary}" unit="INR" />
                 <ObjectStatus text="{Status}" state="Success" />
+                <HBox renderType="Bare">
+                    <Button icon="sap-icon://display" class="sapUiTinyMarginEnd" tooltip="View" press=".onRowViewEmployee"/>
+                    <Button icon="sap-icon://edit"  tooltip="Edit" press=".onRowEditEmployee"/>
+                </HBox>           
+
             </cells>
         </ColumnListItem>
     </items>

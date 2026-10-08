@@ -21,7 +21,7 @@
                     <Toolbar>
                         <Title text="Certifications"/>
                         <ToolbarSpacer/>
-                        <Button text="Add" icon="sap-icon://add" press="addCertifications" type="Emphasized"/>
+                        <Button text="Add" visible="{viewModel>/editMode}" icon="sap-icon://add" press="addCertifications" type="Emphasized"/>
                     </Toolbar>
                 </headerToolbar>
                 <columns>
@@ -43,7 +43,7 @@
             </items>
             </Table>
         <beginButton>
-            <Button text="Save" icon="sap-icon://save" type="Emphasized" press="onSaveDialog"/>
+            <Button text="Save" visible="{viewModel>/editMode}" icon="sap-icon://save" type="Emphasized" press="onSaveDialog"/>
         </beginButton>
         <endButton>
             <Button text="Cancel" icon="sap-icon://decline" press="onCancelDialog"/>

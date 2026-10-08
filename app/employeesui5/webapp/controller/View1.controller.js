@@ -1,3 +1,5 @@
+//const { odata } = require("@sap/cds");
+
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
@@ -12,6 +14,7 @@ sap.ui.define([
             var oViewModel = new sap.ui.model.json.JSONModel({
                 editMode: false,
                 buttonEnabled: false
+                //visibleButton:true
             });
             this.getView().setModel(oViewModel, "viewModel");
         },
@@ -26,7 +29,7 @@ sap.ui.define([
             await newMemory.created();
             console.log("New Employee Data");
             console.log(newMemory.getObject());
-            MessageBox.success("New Employee Created Successfully");
+            //MessageBox.success("New Employee Created Successfully");
 
         },
         onUpdateEmployee: async function () {
@@ -143,14 +146,28 @@ sap.ui.define([
             //this.newMemory.delete();
             //this.newMemory=null;
         },
-        onSaveDialog: function () {
-            var oModel = this.getOwnerComponent().getModel();
-            oModel.submitBatch("EmpGrp");
-            this.loadFragment().close();
+        onSaveDialog: async function () {
+            try {
+                // var oModel = this.getOwnerComponent().getModel();
+                // oModel.submitBatch("EmpGrp");
+                // this.loadFragment().close();
+                var oModel = this.getOwnerComponent().getModel();
+                await oModel.submitBatch("EmpGrp");
+                MessageBox.success("Employee Saved Successfully");
+                this.dialog.close();
+            } catch (oError) {
+                console.error(oError);
+                MessageBox.error(
+                    "Update Failed"
+                );
+            }
+
+
 
         },
         addCertifications: function () {
             //MessageBox.success("lskdfj");
+            
             var certificationslistBinidng = this.byId("id_Certifications").getBinding("items");
             var certifyMemory = certificationslistBinidng.create();
 
@@ -183,16 +200,65 @@ sap.ui.define([
             var aSelectedItems = oTable.getSelectedItems();
 
             var bHasSelection = aSelectedItems.length > 0;
-            if( bHasSelection > 0){
+            if (bHasSelection > 0) {
+                this.getView()
+                    .getModel("viewModel")
+                    .setProperty("/buttonEnabled", true);
+            } else {
+                this.getView()
+                    .getModel("viewModel")
+                    .setProperty("/buttonEnabled", false);
+            }
+
+        },
+        /////If we want to keep the single button in the header then we need to delete this function 
+        //and we need to remove employee> from the  <Input value="{employee>code}" 
+        // editable="{viewModel>/editMode}"/> and 
+        //we need to remove the employee> from the  <Table id="id_Certifications" 
+        // items="{employee>/certifications}">
+        //and we need to remove employee> from the   <Input value="{employee>/Designation}" 
+        // id="id_Designation" editable="{viewModel>/editMode}"/> for all fields
+        onRowViewEmployee: async function (oEvent) {
+            //MessageBox.success("lskdj");
+            var oButton = oEvent.getSource();
+
+            var oContext = oButton.getBindingContext();
+            this.getView().getModel("viewModel").setProperty("/editMode", false);
+            if (!this.oEmployeeDialog) {
+                this.oEmployeeDialog = await this.loadFragment({
+                    name: "employeeui.fragment.EmployeeDialog"
+                });
+            }
+
+            this.oEmployeeDialog.setBindingContext(oContext);
+
             this.getView()
                 .getModel("viewModel")
-                .setProperty("/buttonEnabled", true);
-        }else{
-             this.getView()
+                .setProperty("/editMode", false);
+
+            this.oEmployeeDialog.open();
+        },
+        onRowEditEmployee: async function (oEvent) {
+
+            var oButton = oEvent.getSource();
+
+            var oContext = oButton.getBindingContext();
+
+            if (!this.oEmployeeDialog) {
+                this.oEmployeeDialog = await this.loadFragment({
+                    name: "employeeui.fragment.EmployeeDialog"
+                });
+            }
+
+            this.oEmployeeDialog.setBindingContext(oContext);
+
+            this.getView()
                 .getModel("viewModel")
-                .setProperty("/buttonEnabled", false);
-        }
+                .setProperty("/editMode", true);
+
+            this.oEmployeeDialog.open();
 
         }
+
     });
 });
