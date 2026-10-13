@@ -1,29 +1,211 @@
 <mvc:View controllerName="test.employeesui5.controller.View2"
-    xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.core" xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <Page id="page2" title="I am the page2 part" showNavButton="true" navButtonPress="BacktoView1">
         <content>   
-        <Panel headerText="Employee Information" expandable="true">
+        <Panel headerText="Employee Information - Simple Form Layout" expandable="true">
            <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
             labelSpanM="3" emptySpanL="4" emptySpanM="4">
                 <f:content>
                     <c:Title text="Basic Infor"> </c:Title>
-                    <Label text="Employee Id"></Label>
+                    <Label text="Employee Id:"></Label>
                     <Input ></Input>
-                    <Label text="Name"></Label>
+                    <Label text="Name:"></Label>
                     <Input ></Input>
-                    <Label text="Designation"></Label>
+                    <Label text="Designation:"></Label>
                     <Input ></Input>
 
                     <c:Title text="Basic Infor"> </c:Title>
-                    <Label text="Skill"></Label>
+                    <Label text="Skill:"></Label>
                     <Input ></Input>
-                    <Label text="Status"></Label>
+                    <Label text="Status:"></Label>
                     <Input ></Input>
                 </f:content>
 
            </f:SimpleForm>
            </Panel>
+            <Panel headerText="Employee Information - Grid Layout" expandable="true" expanded="false">
+           <!-- <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
+            labelSpanM="3" emptySpanL="4" emptySpanM="4"> -->
+            <l:Grid vSpacing="0" defaultSpan="L3 M3">
+                <l:content>                   
+                    <Label text="Employee Id:"></Label>
+                    <Input ></Input>
+                    <Label text="Name:"></Label>
+                    <Input ></Input>
+                    <Label text="Designation:"></Label>
+                    <Input ></Input>                   
+                    <Label text="Skill:"></Label>
+                    <Input ></Input>
+                    <Label text="Status:"></Label>
+                    <Input ></Input>
+              </l:content>
+
+           <!-- </f:SimpleForm> -->
+           </l:Grid>
+           </Panel>
+            <Panel headerText="Employee Information - VBOX ND HBOX" expandable="true" expanded="false">
+           <!-- <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
+            labelSpanM="3" emptySpanL="4" emptySpanM="4"> -->
+                <VBox >
+                    <Button text="Submit"></Button>
+                    <Button text="Submit"></Button>
+                    <Button text="Submit"></Button>
+                  
+                </VBox>
+                <HBox >
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Employee Id:"></Label>
+                        <Input ></Input>
+                    </VBox>
+                      <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Employee Id:"></Label>
+                        <Input ></Input>
+                    </VBox>
+                     <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Employee Id:"></Label>
+                        <Input ></Input>
+                    </VBox>
+                </HBox>
+           </Panel>
+            <Panel headerText="Employee Information - VBOX ND HBOX" expandable="true" expanded="false">
+          
+               <FlexBox justifyContent="End">
+                    <Button text="Flex Demo Button"></Button>
+                    <Button text="Flex Demo cancel Button"></Button>
+               </FlexBox>
+                <FlexBox justifyContent="SpaceBetween">
+                    <Button text="Flex Demo Button"></Button>
+                    <Button text="Flex Demo cancel Button"></Button>
+               </FlexBox>
+                  <FlexBox justifyContent="SpaceAround">
+                    <Button text="Flex Demo Button"></Button>
+                    <Button text="Flex Demo cancel Button"></Button>
+               </FlexBox>
+           </Panel>
+           <Panel headerText="Employee Information - Object Header" expandable="true" expanded="false">
+                <ObjectHeader backgroundDesign="Solid" icon="sap-icon://employee" title="Naidu"
+                 number="2300000" numberUnit="Inr">
+                    <attributes>
+                        <ObjectAttribute title="Employee Id" text="100000"></ObjectAttribute>
+                        <ObjectAttribute title="Designation" text="Manager"></ObjectAttribute>
+                    </attributes>
+                    <statuses>
+                        <ObjectStatus text="Available" state="Success" inverted="true"></ObjectStatus>
+                        <ObjectStatus text="Not Available" state="Error" inverted="true"></ObjectStatus>
+                    </statuses>
+                </ObjectHeader>  
+               <IconTabBar >
+                    <items>
+                        <IconTabFilter text="First Tab" >
+                             <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
+            labelSpanM="3" emptySpanL="4" emptySpanM="4">
+                <f:content>
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Employee Id:"></Label>
+                    <Input ></Input>
+                    <Label text="Name:"></Label>
+                    <Input ></Input>
+                    <Label text="Designation:"></Label>
+                    <Input ></Input>
+
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Skill:"></Label>
+                    <Input ></Input>
+                    <Label text="Status:"></Label>
+                    <Input ></Input>
+                </f:content>
+
+           </f:SimpleForm>
+                        </IconTabFilter>
+                         <IconTabFilter text="Second Tab" >
+                             <l:Grid vSpacing="0" defaultSpan="L3 M3">
+                <l:content>                   
+                    <Label text="Employee Id:"></Label>
+                    <Input ></Input>
+                    <Label text="Name:"></Label>
+                    <Input ></Input>
+                    <Label text="Designation:"></Label>
+                    <Input ></Input>                   
+                    <Label text="Skill:"></Label>
+                    <Input ></Input>
+                    <Label text="Status:"></Label>
+                    <Input ></Input>
+              </l:content>
+
+           <!-- </f:SimpleForm> -->
+           </l:Grid>
+                        </IconTabFilter>
+                         <IconTabFilter text="Third Tab">
+                             <FlexBox justifyContent="End">
+                    <Button text="Flex Demo Button"></Button>
+                    <Button text="Flex Demo cancel Button"></Button>
+               </FlexBox>
+                <FlexBox justifyContent="SpaceBetween">
+                    <Button text="Flex Demo Button"></Button>
+                    <Button text="Flex Demo cancel Button"></Button>
+               </FlexBox>
+                  <FlexBox justifyContent="SpaceAround">
+                    <Button text="Flex Demo Button"></Button>
+                    <Button text="Flex Demo cancel Button"></Button>
+               </FlexBox>
+                        </IconTabFilter>
+                    </items>
+               </IconTabBar>         
+           </Panel>
+            <Panel headerText="Employee Information - Splitter" expandable="true" expanded="false">
+                 <l:Splitter id="mainSplitter">
+                    <l:contentAreas>
+                       <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
+            labelSpanM="3" emptySpanL="4" emptySpanM="4">
+                <f:content>
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Employee Id:"></Label>
+                    <Input ></Input>
+                    <Label text="Name:"></Label>
+                    <Input ></Input>
+                    <Label text="Designation:"></Label>
+                    <Input ></Input>
+
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Skill:"></Label>
+                    <Input ></Input>
+                    <Label text="Status:"></Label>
+                    <Input ></Input>
+                </f:content>
+
+           </f:SimpleForm>
+           <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
+            labelSpanM="3" emptySpanL="4" emptySpanM="4">
+                <f:content>
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Employee Id:"></Label>
+                    <Input ></Input>
+                    <Label text="Name:"></Label>
+                    <Input ></Input>
+                    <Label text="Designation:"></Label>
+                    <Input ></Input>
+
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Skill:"></Label>
+                    <Input ></Input>
+                    <Label text="Status:"></Label>
+                    <Input ></Input>
+                </f:content>
+
+           </f:SimpleForm>
+                    </l:contentAreas>
+                 </l:Splitter>           
+           </Panel>
         </content>
+
+
+        <footer>
+            <Bar >
+                <contentRight>
+                    <Button text="ShowCase Button"></Button>
+                </contentRight>
+            </Bar>
+        </footer>
     </Page>  
 </mvc:View>
