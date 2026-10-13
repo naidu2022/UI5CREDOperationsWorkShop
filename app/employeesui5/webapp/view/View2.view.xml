@@ -1,0 +1,29 @@
+<mvc:View controllerName="test.employeesui5.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page2" title="I am the page2 part" showNavButton="true" navButtonPress="BacktoView1">
+        <content>   
+        <Panel headerText="Employee Information" expandable="true">
+           <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
+            labelSpanM="3" emptySpanL="4" emptySpanM="4">
+                <f:content>
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Employee Id"></Label>
+                    <Input ></Input>
+                    <Label text="Name"></Label>
+                    <Input ></Input>
+                    <Label text="Designation"></Label>
+                    <Input ></Input>
+
+                    <c:Title text="Basic Infor"> </c:Title>
+                    <Label text="Skill"></Label>
+                    <Input ></Input>
+                    <Label text="Status"></Label>
+                    <Input ></Input>
+                </f:content>
+
+           </f:SimpleForm>
+           </Panel>
+        </content>
+    </Page>  
+</mvc:View>

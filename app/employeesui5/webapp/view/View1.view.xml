@@ -14,6 +14,7 @@
             <Button text="Delete Employee" icon="sap-icon://add" enabled="{viewModel>/buttonEnabled}" type="Reject" press=".onDeleteEmployee" />
             <Button text="View Employee" press=".onViewEmployee" enabled="{viewModel>/buttonEnabled}" type="Emphasized" icon="sap-icon://display" />
             <SearchField width="250px" placeholder="Search Employee" search=".onSearchEmployee" />
+            <Button text="Go to View2" press=".Gotoview2"></Button>
         </Toolbar>
     </headerToolbar>
     <columns>

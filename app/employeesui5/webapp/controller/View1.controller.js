@@ -259,6 +259,11 @@ sap.ui.define([
 
             this.oEmployeeDialog.open();
 
+        },
+        Gotoview2:function(){
+            MessageBox.success("Button Clicked");
+            this.getOwnerComponent().getRouter().navTo("RouteView2");
+            
         }
 
     });
