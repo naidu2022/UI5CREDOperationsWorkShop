@@ -19,6 +19,27 @@ sap.ui.define([
         this.byId("idwelcom").setTextAlign(value);
         this.byId("idwelcom").setText("Hello Naidu"+ value);
 
+      },
+      ValidatetheForm:function(){
+         this.byId("Input_EmpID").setValueState("None");
+        var allFilled=true;
+        //MessageBox.success("Validate");
+        var empID=this.byId("Input_EmpID").getValue();
+        if(empID === "")
+        {
+          MessageBox.error("Please enter Emp ID");
+          this.byId("Input_EmpID").setValueState("Error");
+          this.byId("Input_EmpID").setValueStateText("Employee Id is Mandatory");
+          //empID.setValueState("Error");
+        }
+        else{
+            var empRegExp=/^\d{6}$/;            
+          if(!empID.match(empRegExp)){
+            allFilled=false;
+            this.byId("Input_EmpID").setValueState("Error");
+            this.byId("Input_EmpID").setValueStateText("Employee Id is not Valid");
+          }
+        }
       }
   });
 });

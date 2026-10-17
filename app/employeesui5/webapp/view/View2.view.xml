@@ -3,23 +3,23 @@
     xmlns="sap.m">
     <Page id="page2" title="I am the page2 part" showNavButton="true" navButtonPress="BacktoView1">
         <content>   
-        <Panel headerText="Employee Information - Simple Form Layout" expandable="true">
+        <Panel headerText="Employee Information - Simple Form Layout" expandable="true" expanded="true">
            <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="3" 
             labelSpanM="3" emptySpanL="4" emptySpanM="4">
                 <f:content>
                     <c:Title text="Basic Infor"> </c:Title>
                     <Label text="Employee Id:"></Label>
-                    <Input ></Input>
+                    <Input required="true" id="Input_EmpID"></Input>
                     <Label text="Name:"></Label>
-                    <Input ></Input>
+                    <Input required="true" id="Input_Name"></Input>
                     <Label text="Designation:"></Label>
-                    <Input ></Input>
+                    <Input required="true" id="Input_Designation"></Input>
 
                     <c:Title text="Basic Infor"> </c:Title>
                     <Label text="Skill:"></Label>
-                    <Input ></Input>
+                    <Input id="Input_Skill"></Input>
                     <Label text="Status:"></Label>
-                    <Input ></Input>
+                    <Input id="Input_Status"></Input>
                 </f:content>
 
            </f:SimpleForm>
@@ -203,7 +203,7 @@
         <footer>
             <Bar >
                 <contentRight>
-                    <Button text="ShowCase Button"></Button>
+                    <Button text="ShowCase Button" press="ValidatetheForm"></Button>
                 </contentRight>
             </Bar>
         </footer>
