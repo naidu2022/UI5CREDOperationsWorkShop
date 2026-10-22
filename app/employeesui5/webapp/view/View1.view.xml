@@ -1,46 +1,142 @@
-<mvc:View controllerName="test.employeesui5.controller.View1"
+<mvc:View xmlns:odata="sap.ui.comp.odata" xmlns:core="sap.ui.core" controllerName="test.employeesui5.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
           <content>
+<Table id="employeeTable"
+    items="{/Employees}"
+    mode="MultiSelect"
+    selectionChange=".onSelectionChange"
+    growing="true"
+    growingThreshold="10"
+    inset="false">
 
-<Table id="employeeTable" items="{/Employees}"  mode="MultiSelect" selectionChange=".onSelectionChange" growing="true" growingThreshold="10" inset="false">
     <headerToolbar>
         <Toolbar>
             <Title text="Employees" level="H2" />
             <ToolbarSpacer />
-            <Button text="Create Employee" icon="sap-icon://add" type="Emphasized" press=".onCreateEmployee" />
-            <Button text="Update Employee" icon="sap-icon://add" enabled="{viewModel>/buttonEnabled}" type="Emphasized" press=".onUpdateEmployee" />
-            <Button text="Delete Employee" icon="sap-icon://add" enabled="{viewModel>/buttonEnabled}" type="Reject" press=".onDeleteEmployee" />
-            <Button text="View Employee" press=".onViewEmployee" enabled="{viewModel>/buttonEnabled}" type="Emphasized" icon="sap-icon://display" />
-            <SearchField width="250px" placeholder="Search Employee" search=".onSearchEmployee" />
-            <Button text="Go to View2" press=".Gotoview2"></Button>
+
+            <Button text="Create Employee"
+                icon="sap-icon://add"
+                type="Emphasized"
+                press=".onCreateEmployee" />
+
+            <Button text="Update Employee"
+                icon="sap-icon://edit"
+                enabled="{viewModel>/buttonEnabled}"
+                type="Emphasized"
+                press=".onUpdateEmployee" />
+
+            <Button text="Delete Employee"
+                icon="sap-icon://delete"
+                enabled="{viewModel>/buttonEnabled}"
+                type="Reject"
+                press=".onDeleteEmployee" />
+
+            <Button text="View Employee"
+                icon="sap-icon://display"
+                enabled="{viewModel>/buttonEnabled}"
+                type="Emphasized"
+                press=".onViewEmployee" />
+
+            <SearchField width="250px"
+                placeholder="Search Employee"
+                search=".onSearchEmployee" />
+
+            <Button text="Go to View2"
+                press=".Gotoview2" />
         </Toolbar>
     </headerToolbar>
+
+    <infoToolbar>
+        <Toolbar>
+            <Label text="I am a select (Dropdown) box"
+                class="sapUiTinyMarginEnd" />
+
+            <Select id="oSelname"
+                items="{/Employees}">
+                  <layoutData>  <FlexItemData growFactor="5"/> </layoutData>
+                <items><core:Item  key="{Name}"  text="{Name}" />  
+                </items>
+            </Select>
+
+             <Label text="I am a Combo box" class="sapUiTinyMarginEnd" />
+            <MultiComboBox id="oCBname" width="30%"  items="{/Employees}">
+            <layoutData> <FlexItemData growFactor="5"/></layoutData>
+                <items> <core:Item key="{Designation}"  text="{Designation}" />
+                </items>
+            </MultiComboBox>
+            <Label text="I am a Radio button" class="sapUiTinyMarginEnd" />
+            <RadioButtonGroup buttons="{/Employees}">
+                <buttons>
+                    <RadioButton text="{Email}"></RadioButton>
+                </buttons>
+            </RadioButtonGroup>
+        </Toolbar>
+    </infoToolbar>
+
     <columns>
-        <Column><Text text="Name" /></Column>
-        <Column><Text text="Designation" /></Column>
-        <Column><Text text="Email" /></Column>
-        <Column><Text text="Phone" /></Column>
-        <Column><Text text="Salary" /></Column>
-        <Column><Text text="Status" /></Column>
-        <Column hAlign="Left"><Text text="Action" /></Column>
+        <Column>
+            <Text text="Name" />
+        </Column>
+
+        <Column>
+            <Text text="Designation" />
+        </Column>
+
+        <Column>
+            <Text text="Email" />
+        </Column>
+
+        <Column>
+            <Text text="Phone" />
+        </Column>
+
+        <Column>
+            <Text text="Salary" />
+        </Column>
+
+        <Column>
+            <Text text="Status" />
+        </Column>
+
+        <Column hAlign="Left">
+            <Text text="Action" />
+        </Column>
     </columns>
 
     <items>
         <ColumnListItem>
             <cells>
                 <ObjectIdentifier title="{Name}" />
-                <Text text="{Designation}" />
-                <Link text="{Email}" href="mailto:{Email}" />
-                <Text text="{Phone}" />
-                <ObjectNumber number="{Salary}" unit="INR" />
-                <ObjectStatus text="{Status}" state="Success" />
-                <HBox renderType="Bare">
-                    <Button icon="sap-icon://display" class="sapUiTinyMarginEnd" tooltip="View" press=".onRowViewEmployee"/>
-                    <Button icon="sap-icon://edit"  tooltip="Edit" press=".onRowEditEmployee"/>
-                </HBox>           
 
+                <Text text="{Designation}" />
+
+                <Link text="{Email}"
+                    href="mailto:{Email}" />
+
+                <Text text="{Phone}" />
+
+                <ObjectNumber
+                    number="{Salary}"
+                    unit="INR" />
+
+                <ObjectStatus
+                    text="{Status}"
+                    state="Success" />
+
+                <HBox renderType="Bare">
+                    <Button
+                        icon="sap-icon://display"
+                        class="sapUiTinyMarginEnd"
+                        tooltip="View"
+                        press=".onRowViewEmployee" />
+
+                    <Button
+                        icon="sap-icon://edit"
+                        tooltip="Edit"
+                        press=".onRowEditEmployee" />
+                </HBox>
             </cells>
         </ColumnListItem>
     </items>

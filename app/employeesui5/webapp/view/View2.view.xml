@@ -20,6 +20,7 @@
                     <Input id="Input_Skill"></Input>
                     <Label text="Status:"></Label>
                     <Input id="Input_Status"></Input>
+                    
                 </f:content>
 
            </f:SimpleForm>
